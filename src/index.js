@@ -15,18 +15,27 @@ window
         ciudad.textContent = responseJson.name;
         const imagen = document.createElement('img');
         imagen.src = `http://openweathermap.org/img/wn/${responseJson.weather[0].icon}@4x.png`;
+        
+        const description = document.createElement('h5')
+        description.textContent = `${responseJson.weather[0].description}`
+        console.log(responseJson.weather[0].description)
+
+        const humedad = document.createElement('h5')
+        humedad.textContent = `Humedad ${responseJson.main.humidity}%`
+        console.log(responseJson.main.humidity)
+
         const temperatura = document.createElement('h5')
         const minTemp = document.createElement('h5')
         const maxTemp = document.createElement('h5')
         temperatura.textContent = `Temp ${(responseJson.main.temp - kelvin).toFixed(1)}°C`;
-        minTemp.textContent = ` Min ${(responseJson.main.temp_min)}°C`;
+        minTemp.textContent = ` Min ${(responseJson.main.temp_min - kelvin).toFixed(1)}°C`;
         maxTemp.textContent = ` Max ${(responseJson.main.temp_max - kelvin).toFixed(1)}°C`;
 
         const temp = document.createElement('span')
         const contenedor = document.createElement('div')
 
         temp.append(temperatura, minTemp, maxTemp)
-        contenedor.append(ciudad, imagen, temp)
+        contenedor.append(ciudad, imagen, description, humedad, temp)
 
         todosLosItems.push(contenedor)
 
