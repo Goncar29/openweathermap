@@ -15,21 +15,25 @@ header {
   flex-wrap: wrap;
 }
 
+body {
+  background-image: url("https://blog.buscarrural.com/wp-content/uploads/elementor/thumbs/mudancas-climaticas-interferem-na-produtividade-das-lavouras-peiegu65fr2j913scyt2h9vbrum3tm2vykadbg7zow.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 main {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-main div {
+main .cards {
   width: 25rem;
   padding: 2rem;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   font-size: 1.5rem;
-  justify-content: column;
   border-radius: 3rem;
-  box-shadow: 1rem 1rem skyblue;
-}
-main div img {
-  width: 50rem;
+  background-color: skyblue;
+  opacity: 0.3;
 }/*# sourceMappingURL=index.css.map */

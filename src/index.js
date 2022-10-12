@@ -33,6 +33,7 @@ window
 
         const temp = document.createElement('span')
         const contenedor = document.createElement('div')
+        contenedor.classList.add('cards')
 
         temp.append(temperatura, minTemp, maxTemp)
         contenedor.append(ciudad, imagen, description, humedad, temp)
