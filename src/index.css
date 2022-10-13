@@ -12,7 +12,12 @@ html {
 header {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  height: 10rem;
+}
+header h3 {
+  padding: 1rem 0;
 }
 
 body {
