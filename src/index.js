@@ -1,16 +1,24 @@
+const obtenerClima = document.querySelector('#obtenerClima')
+const idCiudad = document.querySelector('#idCity')
 const idCity = '3441572'
 const key = '24a2daea82cd2f605739444659d81ef8'
+
 const url = `https://api.openweathermap.org/data/2.5/weather?id=${idCity}&appid=${key}`
 
 const kelvin = 273.15
 
-window
+
+obtenerClima.addEventListener('click', e => {
+    e.preventDefault();
+
+    
+    window
     .fetch(url)
     .then((respuesta) => respuesta.json())
     .then((responseJson) => {
         const todosLosItems = []
 
-        console.log(responseJson.main.temp);
+        console.log(responseJson.name);
 
         const ciudad = document.createElement('h2');
         ciudad.textContent = responseJson.name;
@@ -41,5 +49,7 @@ window
 
         todosLosItems.push(contenedor)
 
-        document.querySelector("body > main").append(...todosLosItems)
+        document.querySelector("body > main > div").append(...todosLosItems)
     })
+})
+
