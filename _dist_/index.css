@@ -16,7 +16,7 @@ header {
   flex-direction: column;
   height: 10rem;
 }
-header h3 {
+header h2 {
   padding: 1rem 0;
 }
 
@@ -26,12 +26,31 @@ body {
   background-size: cover;
 }
 
-main {
+main form {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-main .cards {
+main form .form-input {
+  background-color: rgba(133, 182, 197, 0.3);
+  border-radius: 3rem;
+  width: 25rem;
+  height: 3rem;
+}
+main form .form-button {
+  background-color: rgba(133, 182, 197, 0.3);
+  border-radius: 2rem;
+  width: 6rem;
+  height: 3rem;
+}
+main div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2rem;
+}
+main div .cards {
   color: white;
   width: 25rem;
   padding: 2rem;
@@ -42,6 +61,6 @@ main .cards {
   background-color: rgba(133, 182, 197, 0.3);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.5);
 }
-main .cards h5 {
+main div .cards h5 {
   padding-top: 0.5rem;
 }/*# sourceMappingURL=index.css.map */
