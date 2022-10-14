@@ -1,24 +1,22 @@
 const obtenerClima = document.querySelector('#obtenerClima')
-const idCiudad = document.querySelector('#idCity')
-const idCity = '3441572'
+const ciudad = document.querySelector('#ciudad')
+// const montevideoID = '3441575'
 const key = '24a2daea82cd2f605739444659d81ef8'
+const unidad = 'metric'
+// const urlId = `https://api.openweathermap.org/data/2.5/weather?id=${idCity}&appid=${key}`
 
-const url = `https://api.openweathermap.org/data/2.5/weather?id=${idCity}&appid=${key}`
+const url = `https://api.openweathermap.org/data/2.5/weather?q=Melo&appid=${key}&units=${unidad}`
 
-const kelvin = 273.15
-
+// const kelvin = 273.15
 
 obtenerClima.addEventListener('click', e => {
-    e.preventDefault();
-
+    e.preventDefault();    
     
     window
     .fetch(url)
     .then((respuesta) => respuesta.json())
     .then((responseJson) => {
         const todosLosItems = []
-
-        console.log(responseJson.name);
 
         const ciudad = document.createElement('h2');
         ciudad.textContent = responseJson.name;
@@ -36,9 +34,9 @@ obtenerClima.addEventListener('click', e => {
         const temperatura = document.createElement('h5')
         const minTemp = document.createElement('h5')
         const maxTemp = document.createElement('h5')
-        temperatura.textContent = `Temp ${(responseJson.main.temp - kelvin).toFixed(1)}°C`;
-        minTemp.textContent = ` Min ${(responseJson.main.temp_min - kelvin).toFixed(1)}°C`;
-        maxTemp.textContent = ` Max ${(responseJson.main.temp_max - kelvin).toFixed(1)}°C`;
+        temperatura.textContent = `Temp ${(responseJson.main.temp)}°C`;
+        minTemp.textContent = ` Min ${(responseJson.main.temp_min)}°C`;
+        maxTemp.textContent = ` Max ${(responseJson.main.temp_max)}°C`;
 
         const temp = document.createElement('span')
         const contenedor = document.createElement('div')
