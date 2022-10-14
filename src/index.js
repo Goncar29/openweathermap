@@ -1,16 +1,13 @@
 const obtenerClima = document.querySelector('#obtenerClima')
 const ciudad = document.querySelector('#ciudad')
-// const montevideoID = '3441575'
 const key = '24a2daea82cd2f605739444659d81ef8'
 const unidad = 'metric'
-// const urlId = `https://api.openweathermap.org/data/2.5/weather?id=${idCity}&appid=${key}`
-
-const url = `https://api.openweathermap.org/data/2.5/weather?q=Melo&appid=${key}&units=${unidad}`
-
-// const kelvin = 273.15
 
 obtenerClima.addEventListener('click', e => {
-    e.preventDefault();    
+    e.preventDefault();
+
+    const ciudadValue = ciudad.value
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudadValue}&lang=es&appid=${key}&units=${unidad}`
     
     window
     .fetch(url)
