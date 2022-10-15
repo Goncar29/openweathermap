@@ -23,7 +23,7 @@ header h2 {
 body {
   background-image: url("./img1.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
 }
 
 main form {
