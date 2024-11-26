@@ -5,6 +5,6 @@ module.exports = {
     src: '/_dist_',
   },
   buildOptions: {
-    baseUrl: 'https://goncar29.github.io/openweathermap/',
+    baseUrl: 'https://goncar29.github.io/openweathermap',
   },
 }
