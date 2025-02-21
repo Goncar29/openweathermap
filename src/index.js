@@ -8,43 +8,43 @@ obtenerClima.addEventListener('click', e => {
 
     const ciudadValue = ciudad.value
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudadValue}&lang=es&appid=${key}&units=${unidad}`
-    
+
     window
-    .fetch(url)
-    .then((respuesta) => respuesta.json())
-    .then((responseJson) => {
-        const todosLosItems = []
+        .fetch(url)
+        .then((respuesta) => respuesta.json())
+        .then((responseJson) => {
+            const todosLosItems = []
 
-        const ciudad = document.createElement('h2');
-        ciudad.textContent = responseJson.name;
-        const imagen = document.createElement('img');
-        imagen.src = `http://openweathermap.org/img/wn/${responseJson.weather[0].icon}@4x.png`;
-        
-        const description = document.createElement('h5')
-        description.textContent = `${responseJson.weather[0].description}`
-        console.log(responseJson.weather[0].description)
+            const ciudad = document.createElement('h2');
+            ciudad.textContent = responseJson.name;
+            const imagen = document.createElement('img');
+            imagen.src = `http://openweathermap.org/img/wn/${responseJson.weather[0].icon}@4x.png`;
 
-        const humedad = document.createElement('h5')
-        humedad.textContent = `Humedad ${responseJson.main.humidity}%`
-        console.log(responseJson.main.humidity)
+            const description = document.createElement('h4')
+            description.textContent = `${responseJson.weather[0].description}`
+            console.log(responseJson.weather[0].description)
 
-        const temperatura = document.createElement('h5')
-        const minTemp = document.createElement('h5')
-        const maxTemp = document.createElement('h5')
-        temperatura.textContent = `Temp ${(responseJson.main.temp)}°C`;
-        minTemp.textContent = ` Min ${(responseJson.main.temp_min)}°C`;
-        maxTemp.textContent = ` Max ${(responseJson.main.temp_max)}°C`;
+            const humedad = document.createElement('h5')
+            humedad.textContent = `Humedad ${responseJson.main.humidity}%`
+            console.log(responseJson.main.humidity)
 
-        const temp = document.createElement('span')
-        const contenedor = document.createElement('div')
-        contenedor.classList.add('cards')
+            const temperatura = document.createElement('h5')
+            const minTemp = document.createElement('h5')
+            const maxTemp = document.createElement('h5')
+            temperatura.textContent = `Temp ${(responseJson.main.temp)}°C`;
+            minTemp.textContent = ` Min ${(responseJson.main.temp_min)}°C`;
+            maxTemp.textContent = ` Max ${(responseJson.main.temp_max)}°C`;
 
-        temp.append(temperatura, minTemp, maxTemp)
-        contenedor.append(ciudad, imagen, description, humedad, temp)
+            const temp = document.createElement('span')
+            const contenedor = document.createElement('div')
+            contenedor.classList.add('cards')
 
-        todosLosItems.push(contenedor)
+            temp.append(temperatura, minTemp, maxTemp)
+            contenedor.append(ciudad, imagen, description, humedad, temp)
 
-        document.querySelector("body > main > div").append(...todosLosItems)
-    })
+            todosLosItems.push(contenedor)
+
+            document.querySelector("body > main > div").append(...todosLosItems)
+        })
 })
 

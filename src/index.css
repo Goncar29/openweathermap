@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   padding: 0;
@@ -16,39 +17,61 @@ header {
   flex-direction: column;
   height: 10rem;
 }
-header h2 {
-  padding: 1rem 0;
+header h1 {
+  padding: 5rem 0;
 }
 
 body {
-  background-image: url("./img1.jpg");
+  background-image: url("./montaña.jpg");
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
 }
 
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
 main form {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 2rem 0;
 }
 main form .form-input {
-  background-color: rgba(133, 182, 197, 0.3);
-  border-radius: 3rem;
-  width: 25rem;
-  height: 3rem;
+  padding: 0.625rem 1rem;
+  border-radius: 1rem;
+  width: 20rem;
+  border: 1rem;
+}
+main form input:focus {
+  outline: none;
 }
 main form .form-button {
-  background-color: rgba(133, 182, 197, 0.3);
-  border-radius: 2rem;
-  width: 6rem;
-  height: 3rem;
+  padding: 0.625rem 2rem;
+  margin-left: 1rem;
+  border-radius: 1rem;
+  width: 8rem;
+  border: 1rem;
+}
+main form .form-button:hover {
+  transition: 0.5s;
+  background-color: rgba(133, 182, 197, 0.5);
 }
 main div {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
-  margin: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  /* Mantiene la alineación de las cards */
+  gap: 1rem;
 }
 main div .cards {
   color: white;
@@ -58,9 +81,24 @@ main div .cards {
   flex-direction: column;
   font-size: 1.5rem;
   border-radius: 3rem;
-  background-color: rgba(133, 182, 197, 0.3);
+  background-color: rgba(133, 182, 197, 0.5);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.5);
+  height: 40rem;
+  max-width: 25rem;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 main div .cards h5 {
   padding-top: 0.5rem;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: 10rem;
+}
+footer h1 {
+  margin-top: 3rem;
 }/*# sourceMappingURL=index.css.map */
