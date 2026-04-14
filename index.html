@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="App del clima - Busca el clima de cualquier ciudad"
+    />
+    <link rel="stylesheet" href="/src/index.css" />
+    <title>App Del Clima</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Busca la ciudad que quieras para obtener datos del clima</h1>
+    </header>
+    <main>
+      <form id="form" action="">
+        <label for="ciudad" class="visually-hidden">Nombre de la ciudad</label>
+        <input
+          class="form-input"
+          type="text"
+          id="ciudad"
+          placeholder="Buscar ciudad"
+          aria-label="Nombre de la ciudad"
+          required
+        />
+        <button
+          class="form-button"
+          type="submit"
+          id="obtenerClima"
+          aria-label="Obtener información del clima"
+        >
+          Enviar
+        </button>
+      </form>
+      <div id="resultados" aria-live="polite" aria-label="Resultados del clima">
+        <!-- Aqui va todo de la API -->
+      </div>
+    </main>
+    <footer>
+      <p>by @Goncar29</p>
+    </footer>
+    <script type="module" src="/src/index.js"></script>
+  </body>
+</html>
