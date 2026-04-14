@@ -1,50 +1,88 @@
-const obtenerClima = document.querySelector('#obtenerClima')
-const ciudad = document.querySelector('#ciudad')
-const key = '24a2daea82cd2f605739444659d81ef8'
-const unidad = 'metric'
+const obtenerClima = document.querySelector("#obtenerClima");
+const ciudad = document.querySelector("#ciudad");
+const resultados = document.querySelector("#resultados");
+const key = import.meta.env.VITE_API_KEY;
+const unidad = "metric";
 
-obtenerClima.addEventListener('click', e => {
-    e.preventDefault();
+const mostrarError = (mensaje) => {
+  resultados.innerHTML = "";
+  const errorDiv = document.createElement("div");
+  errorDiv.className = "error";
+  errorDiv.setAttribute("role", "alert");
+  errorDiv.textContent = mensaje;
+  resultados.appendChild(errorDiv);
+};
 
-    const ciudadValue = ciudad.value
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudadValue}&lang=es&appid=${key}&units=${unidad}`
+const mostrarLoading = () => {
+  resultados.innerHTML = "";
+  const loadingDiv = document.createElement("div");
+  loadingDiv.className = "loading";
+  loadingDiv.setAttribute("aria-live", "polite");
+  loadingDiv.textContent = "Cargando datos del clima...";
+  resultados.appendChild(loadingDiv);
+};
 
-    window
-        .fetch(url)
-        .then((respuesta) => respuesta.json())
-        .then((responseJson) => {
-            const todosLosItems = []
+const crearCardClima = (data) => {
+  const { name, main, weather } = data;
 
-            const ciudad = document.createElement('h2');
-            ciudad.textContent = responseJson.name;
-            const imagen = document.createElement('img');
-            imagen.src = `http://openweathermap.org/img/wn/${responseJson.weather[0].icon}@4x.png`;
+  const card = document.createElement("div");
+  card.className = "cards";
 
-            const description = document.createElement('h4')
-            description.textContent = `${responseJson.weather[0].description}`
-            console.log(responseJson.weather[0].description)
+  const ciudadElem = document.createElement("h2");
+  ciudadElem.textContent = name;
 
-            const humedad = document.createElement('h5')
-            humedad.textContent = `Humedad ${responseJson.main.humidity}%`
-            console.log(responseJson.main.humidity)
+  const imagen = document.createElement("img");
+  imagen.src = `https://openweathermap.org/img/wn/${weather[0].icon}@4x.png`;
+  imagen.alt = `Icono del clima: ${weather[0].description}`;
 
-            const temperatura = document.createElement('h5')
-            const minTemp = document.createElement('h5')
-            const maxTemp = document.createElement('h5')
-            temperatura.textContent = `Temp ${(responseJson.main.temp)}°C`;
-            minTemp.textContent = ` Min ${(responseJson.main.temp_min)}°C`;
-            maxTemp.textContent = ` Max ${(responseJson.main.temp_max)}°C`;
+  const description = document.createElement("h4");
+  description.textContent = weather[0].description;
 
-            const temp = document.createElement('span')
-            const contenedor = document.createElement('div')
-            contenedor.classList.add('cards')
+  const humedad = document.createElement("h5");
+  humedad.textContent = `Humedad ${main.humidity}%`;
 
-            temp.append(temperatura, minTemp, maxTemp)
-            contenedor.append(ciudad, imagen, description, humedad, temp)
+  const temperatura = document.createElement("span");
+  temperatura.innerHTML = `Temp ${main.temp}°C<br> Min ${main.temp_min}°C<br> Max ${main.temp_max}°C`;
 
-            todosLosItems.push(contenedor)
+  card.append(ciudadElem, imagen, description, humedad, temperatura);
+  return card;
+};
 
-            document.querySelector("body > main > div").append(...todosLosItems)
-        })
-})
+const obtenerClimaHandler = async (e) => {
+  e.preventDefault();
 
+  const ciudadValue = ciudad.value.trim();
+  if (!ciudadValue) {
+    mostrarError("Por favor, ingresa el nombre de una ciudad");
+    return;
+  }
+
+  mostrarLoading();
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(ciudadValue)}&lang=es&appid=${key}&units=${unidad}`;
+
+  try {
+    const respuesta = await window.fetch(url);
+    const data = await respuesta.json();
+
+    resultados.innerHTML = "";
+
+    if (!respuesta.ok) {
+      if (data.cod === "404") {
+        mostrarError(`No se encontró la ciudad "${ciudadValue}"`);
+      } else if (data.cod === "401") {
+        mostrarError("Error de API key. Contacta al administrador.");
+      } else {
+        mostrarError(data.message || "Error al obtener el clima");
+      }
+      return;
+    }
+
+    const card = crearCardClima(data);
+    resultados.appendChild(card);
+  } catch (error) {
+    mostrarError("Error de conexión. Verifica tu conexión a internet.");
+  }
+};
+
+obtenerClima.addEventListener("click", obtenerClimaHandler);

@@ -1,114 +1,142 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: 'Varela Round', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Varela Round", sans-serif;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 10rem;
 
-    h1 {
-        padding: 5rem 0;
-    }
+  h1 {
+    padding: 5rem 0;
+  }
 }
 
 body {
-    background-image: url('./montaña.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url("./montaña.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 html,
 body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    flex-grow: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  form {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
 
-    form {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 2rem 0;
-
-        .form-input {
-            padding: 0.625rem 1rem;
-            border-radius: 1rem;
-            width: 20rem;
-            border: 1rem;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        .form-button {
-            padding: 0.625rem 2rem;
-            margin-left: 1rem;
-            border-radius: 1rem;
-            width: 8rem;
-            border: 1rem;
-        }
-
-        .form-button:hover {
-            transition: 0.5s;
-            background-color: rgba(133, 182, 197, 0.5);
-        }
+    .form-input {
+      padding: 0.625rem 1rem;
+      border-radius: 1rem;
+      width: 20rem;
+      border: 1rem;
     }
 
-    div {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-        /* Mantiene la alineación de las cards */
-        gap: 1rem;
-
-        .cards {
-            color: white;
-            width: 25rem;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            font-size: 1.5rem;
-            border-radius: 3rem;
-            background-color: rgba(133, 182, 197, 0.5);
-            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.5);
-            height: 40rem;
-            max-width: 25rem;
-            flex-wrap: nowrap;
-            justify-content: center;
-
-            h5 {
-                padding-top: 0.5rem;
-            }
-        }
-
+    input:focus {
+      outline: none;
     }
+
+    .form-button {
+      padding: 0.625rem 2rem;
+      margin-left: 1rem;
+      border-radius: 1rem;
+      width: 8rem;
+      border: 1rem;
+    }
+
+    .form-button:hover {
+      transition: 0.5s;
+      background-color: rgba(133, 182, 197, 0.5);
+    }
+  }
+
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    /* Mantiene la alineación de las cards */
+    gap: 1rem;
+
+    .cards {
+      color: white;
+      width: 25rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      font-size: 1.5rem;
+      border-radius: 3rem;
+      background-color: rgba(133, 182, 197, 0.5);
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.5);
+      height: 40rem;
+      max-width: 25rem;
+      flex-wrap: nowrap;
+      justify-content: center;
+
+      h5 {
+        padding-top: 0.5rem;
+      }
+    }
+
+    .error,
+    .loading {
+      color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .error {
+      background-color: rgba(220, 53, 69, 0.8);
+    }
+
+    .loading {
+      background-color: rgba(133, 182, 197, 0.8);
+    }
+  }
 }
 
 footer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: column;
-    height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: 10rem;
 
-    h1 {
-        margin-top: 3rem;
-    }
+  p {
+    margin-top: 3rem;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
