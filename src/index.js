@@ -1,3 +1,5 @@
+import "./index.scss";
+
 const obtenerClima = document.querySelector("#obtenerClima");
 const ciudad = document.querySelector("#ciudad");
 const resultados = document.querySelector("#resultados");
