@@ -1,28 +1,9 @@
-name: Deploy to GitHub Pages
-
+# Publish disabled - we use deploy.yml
+name: Publish (disabled)
 on:
-  push:
-    branches:
-      - master
-      - main
-
+  workflow_dispatch:
 jobs:
-  build-deploy:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-
-      - run: yarn
-
-      - run: yarn build
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+      - run: echo 'Publish disabled - using deploy.yml instead'
