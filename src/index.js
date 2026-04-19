@@ -33,9 +33,13 @@ const crearCardClima = (data) => {
   const ciudadElem = document.createElement("h2");
   ciudadElem.textContent = name;
 
+  const iconCode = weather[0].icon;
   const imagen = document.createElement("img");
-  imagen.src = `https://openweathermap.org/img/wn/${weather[0].icon}@4x.png`;
+  imagen.src = `${import.meta.env.BASE_URL}weather-icons/${iconCode}.png`;
   imagen.alt = `Icono del clima: ${weather[0].description}`;
+  imagen.onerror = () => {
+    imagen.src = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
+  };
 
   const description = document.createElement("h4");
   description.textContent = weather[0].description;
